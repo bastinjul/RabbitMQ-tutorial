@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  rabbitmq-backend:
+    container_name: rabbitmq-backend
+    image: rabbitmq-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+
+  rabbitmq-broker:
+    container_name: rabbitmq-broker
+    image: rabbitmq:3.10.5-management
+    ports:
+      - "5673:5672"
+      - "15672:15672"
