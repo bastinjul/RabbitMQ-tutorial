@@ -21,7 +21,8 @@ public class TestController {
     @Operation
     @GetMapping(value = "/test/send")
     @ResponseBody
-    public String testSend(@RequestParam(value = "message", defaultValue = "Hello World!") String message) {
+    public String testSend(@RequestParam(value = "name", defaultValue = "Order1") String name, @RequestParam(value = "value") Double value) {
+        producerService.sendMessage(name, value);
         return "message sent";
     }
 }
